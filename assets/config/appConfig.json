@@ -1,0 +1,4 @@
+﻿{
+  "GeoCodingHost" : "https://api.openweathermap.org/geo/1.0/",
+  "OpenWeatherHost": "https://api.openweathermap.org/data/3.0/onecall?"
+}
