@@ -1,5 +1,6 @@
 ﻿import {mainWeatherTemp} from "../hmlTemplates.js";
-import{FormatDate} from "../helpers.js";
+import {addOneDay, FormatDate} from "../helpers.js";
+import {FilterWeathersByDate} from "./weatherManager.js";
 
 function DisplayMainWeathers(MainWeathers) {
 
@@ -11,7 +12,7 @@ function DisplayMainWeathers(MainWeathers) {
     for (let currentWeather of MainWeathers) {
 
         let weatherElement = document.createElement('div');
-        weatherElement.classList.add("currentWeather", "d-none","col","mx-auto");
+        weatherElement.classList.add("currentWeather", "d-none", "col", "mx-auto");
         weatherElement.innerHTML = mainWeatherTemp;
 
 
@@ -52,6 +53,41 @@ function DisplayMainWeathers(MainWeathers) {
 
 }
 
+function DisplayDetailedWeathers(weathers) {
+
+    // let carousel = document.querySelector(".carousel-inner");
+
+    let dates = [];
+    let date = new Date(Date.now());
+    for (let i = 0; i < 5; i++) {
+        dates.push(new Date(date));
+        // date=addOneDay(date);
+        addOneDay(date);
+    }
+
+    let WeathersByDates = [];
+
+    for (let d of dates) {
+        WeathersByDates.push(FilterWeathersByDate(weathers, dates[dates.indexOf(d)]))
+    }
+
+
+    let container = document.querySelector(".detailedWeather");
+
+
+    for (let weathers of WeathersByDates) {
+
+        DisplayWeatherAllDay(weathers);
+
+    }
+
+    let firstItem = container.children.item(0);
+    firstItem.classList.remove("d-none");
+    firstItem.classList.add("active");
+
+
+}
+
 function DisplayBy3Hours(weather) {
 
     let card = document.createElement('div');
@@ -70,16 +106,21 @@ function DisplayBy3Hours(weather) {
     card.querySelector(".description").innerText = weather.description;
     card.querySelector(".temp").innerText = `${weather.temp}°`;
 
-    document.querySelector(".weatherAllDay").appendChild(card);
-
+    return card;
 }
 
 function DisplayWeatherAllDay(weathers) {
 
+    let wrapper = document.querySelector(".detailedWeather");
+    let row = document.createElement('div');
+    row.classList.add("d-none", "details", "d-flex", "-row", "m-1");
+
     for (let weather of weathers) {
 
-        DisplayBy3Hours(weather);
+        row.appendChild(DisplayBy3Hours(weather));
     }
+
+    wrapper.appendChild(row);
 }
 
-export{DisplayMainWeathers, DisplayWeatherAllDay}
+export {DisplayMainWeathers, DisplayWeatherAllDay, DisplayDetailedWeathers}

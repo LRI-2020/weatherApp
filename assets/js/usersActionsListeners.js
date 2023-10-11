@@ -1,5 +1,6 @@
 ﻿import {GetWeatherByCity, GetWeatherByZipCode, FilterWeathersByDate, GetWeathersMinDate} from "./weatherManager/weatherManager.js";
-import {DisplayMainWeathers, DisplayWeatherAllDay} from "./weatherManager/DisplayWeather.js";
+import {DisplayMainWeathers, DisplayWeatherAllDay,DisplayDetailedWeathers} from "./weatherManager/DisplayWeather.js";
+import {addOneDay} from "./helpers.js";
 
 async function GenerateBruxellesWeather() {
 
@@ -18,7 +19,7 @@ function SetFormListener() {
     cityForm.addEventListener('submit', async function (e) {
         e.preventDefault();
         document.querySelector(".allWeather").innerHTML = "";
-        document.querySelector(".weatherAllDay").innerHTML = "";
+        document.querySelector(".detailedWeather").innerHTML = "";
         await GetWeather(cityForm);
 
     })
@@ -28,29 +29,35 @@ function SetFormListener() {
 function SetButtonsListeners() {
     let prev = document.querySelector(".previous")
     prev.addEventListener("click", () => {
-        let active = document.querySelector(".active");
-        let previousEl = active.previousSibling;
+        let activeMain = document.querySelector(".currentWeather.active");
+        let previousElMain = activeMain.previousSibling;
+        let activeDetails = document.querySelector(".details.active");
+        let previousElDetails = activeDetails.previousSibling;
 
-        ChangeActive(active, previousEl);
+        ChangeActive(activeMain, previousElMain,"currentWeather");
+        ChangeActive(activeDetails, previousElDetails,"details");
         
     });
 
     let next = document.querySelector(".next");
 
     next.addEventListener("click", () => {
-        let active = document.querySelector(".active");
-        let nextEl = active.nextSibling;
+        let activeMain = document.querySelector(".currentWeather.active");
+        let nextElMain = activeMain.nextSibling;
+        let activeDetails = document.querySelector(".details.active");
+        let nextElDetails = activeDetails.nextSibling;
 
-        ChangeActive(active, nextEl);
+        ChangeActive(activeMain, nextElMain, "currentWeather");
+        ChangeActive(activeDetails, nextElDetails,"details");
 
     });
 
 }
 
 
-function ChangeActive(current, sibling) {
+function ChangeActive(current, sibling, className) {
 
-    if (sibling !== null && sibling.classList !== undefined && sibling.classList.contains("currentWeather")) {
+    if (sibling !== null && sibling.classList !== undefined && sibling.classList.contains(className)) {
         current.classList.toggle("d-none");
         current.classList.toggle("active");
         sibling.classList.toggle("d-none");
@@ -69,13 +76,16 @@ async function GetWeather(cityForm) {
 
             let mainWeathers = GetMainWeathers(r);
             DisplayMainWeathers(mainWeathers);
-            DisplayWeatherAllDay(FilterWeathersByDate(r, GetWeathersMinDate(mainWeathers)))
+            DisplayDetailedWeathers(r);
+            // DisplayWeatherAllDay(FilterWeathersByDate(r, GetWeathersMinDate(mainWeathers)))
             return r;
         });
 
     } else if (zipCode !== null && zipCode.trim() !== "" && country !== null && country.trim() !== "") {
         return await GetWeatherByZipCode(zipCode, country).then((r) => {
-            DisplayMainWeathers(GetMainWeathers(r));
+            let mainWeathers = GetMainWeathers(r);
+            DisplayMainWeathers(mainWeathers);
+            // DisplayWeatherAllDay(FilterWeathersByDate(r, GetWeathersMinDate(mainWeathers)))
             return r;
         });
 
@@ -87,10 +97,17 @@ async function GetWeather(cityForm) {
 function GetMainWeathers(weathers) {
 
     let mainWeathers = [];
-    let date = Date.now();
+    let date = new Date(Date.now());
     for (let i = 0; i < 5; i++) {
-        mainWeathers.push(FilterWeathersByDate(weathers, date)[0]);
-        date = new Date().setDate(new Date(date).getDate()+1);
+        let weatherOfTheDate = FilterWeathersByDate(weathers, date.getTime());
+        if(i===0){
+            mainWeathers.push(weatherOfTheDate[0])
+        }
+        else{
+            // mainWeathers.push(GetWeatherAverageHour(weatherOfTheDate));
+            mainWeathers.push(weatherOfTheDate[3])
+        }
+        date = addOneDay(date);
     }
 
     return mainWeathers;

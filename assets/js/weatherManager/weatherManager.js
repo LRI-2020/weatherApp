@@ -27,6 +27,30 @@ function GetWeathersMinDate(weathers){
     return res;
 }
 
+function GetWeatherAverageHour(weathers){
+    
+    let dates = [];
+    
+    weathers.forEach(i => dates.push(i.date.getTime()));
+    let average = dates.reduce((a,b) => a+b)/dates.length;
+    
+    let res;
+    
+    for(let i=0;i<weathers.length-1;i++) {
+        let a = Math.abs(weathers[i].date.getTime() - average);
+        let b = Math.abs(weathers[i + 1].date.getTime() - average);
+        
+        if (a<b)
+            res = weathers[i];
+        else{
+            res= weathers[i+1];
+        }
+    }
+            
+    return res;
+    
+}
+
 //take array of weathers and filter it for one day
 //date as timeStamp
 function FilterWeathersByDate(weathers, date) {
@@ -43,4 +67,4 @@ function FilterWeathersByDate(weathers, date) {
 }
 
 
-export {GetWeatherByCity, GetWeatherByZipCode, FilterWeathersByDate, GetWeathersMinDate}
+export {GetWeatherByCity, GetWeatherByZipCode, FilterWeathersByDate, GetWeathersMinDate, GetWeatherAverageHour}

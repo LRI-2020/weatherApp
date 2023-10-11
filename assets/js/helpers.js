@@ -16,4 +16,10 @@ async function GetCountryCode(country) {
 
 }
 
-export{FormatDate, GetCountryCode}
+function addOneDay(date = new Date()) {
+    date.setDate(date.getDate() + 1);
+
+    return date;
+}
+
+export{FormatDate, GetCountryCode, addOneDay}
