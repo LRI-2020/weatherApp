@@ -5,8 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
             crossorigin="anonymous"></script>
-<!--    <script type="module" defer src="./main.js"></script>-->
-    <script type="module" defer src="./assets/js/geoLocManager.js"></script>
+        <script type="module" defer src="./main.js"></script>
+<!--    <script type="module" defer src="./assets/js/usersActionsListeners.js"></script>-->
     <title>Weather Application</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
           crossorigin="anonymous">
@@ -18,16 +18,55 @@
     <main>
         <form class="form cityForm my-2">
             <label for="cityName">City Name : </label>
-            <input type="text" name="cityName" id="cityName">           
+            <input type="text" name="cityName" id="cityName">
+            OR
             <label for="zipCode">Zip Code : </label>
-            <input type="text" name="zipCode" id="zipCode">            
+            <input type="text" name="zipCode" id="zipCode">
             <label for="countryName">Country Name : </label>
             <input type="text" name="countryName" id="countryName">
             <button class="btn btn-secondary">Send</button>
         </form>
-        
+
+        <div class="mainWeatherWrapper d-flex flex-row">
+            
+        <button type="button" class="btn btn-secondary previous align-self-center">Previous</button>
+
+        <div class="row allWeather mx-auto">
+        </div>
+        <button type="button" class="btn btn-secondary next align-self-center">Next</button>
+
+        </div>
+        <div class="weatherAllDay d-flex flex-row m-1">
+           
+        </div>
+
+       
+
     </main>
     <footer></footer>
 </div>
 </body>
 </html>
+
+<!--        <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">-->
+<!--            <div class="carousel-inner">-->
+<!--                <div class="carousel-item active day1 mx-auto my-2">-->
+<!--                </div>-->
+<!--                <div class="carousel-item day2">-->
+<!--                </div>-->
+<!--                <div class="carousel-item day3">-->
+<!--                </div>-->
+<!--                <div class="carousel-item day4">-->
+<!--                </div>-->
+<!--                <div class="carousel-item day5">-->
+<!--                </div>-->
+<!--            </div>-->
+<!--            <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">-->
+<!--                <span class="carousel-control-prev-icon" aria-hidden="true"></span>-->
+<!--                <span class="sr-only">Previous</span>-->
+<!--            </a>-->
+<!--            <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">-->
+<!--                <span class="carousel-control-next-icon" aria-hidden="true"></span>-->
+<!--                <span class="sr-only">Next</span>-->
+<!--            </a>-->
+<!--        </div>-->

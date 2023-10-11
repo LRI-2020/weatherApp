@@ -1,0 +1,273 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.min.js" integrity="sha384-cuYeSxntonz0PPNlHhBs68uyIAVpIIOZZ5JqeqvYYIcEL727kskC66kF92t6Xl2V"
+            crossorigin="anonymous"></script>
+    <!--    <script type="module" defer src="./main.js"></script>-->
+    <script type="module" defer src="./assets/js/usersActionsListeners.js"></script>
+    <title>Weather Application</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+          crossorigin="anonymous">
+    <link rel="stylesheet" href="./assets/scss/style.css">
+</head>
+<body>
+<div class="container">
+    <header></header>
+    <main>
+        <form class="form cityForm my-2">
+            <label for="cityName">City Name : </label>
+            <input type="text" name="cityName" id="cityName">
+            OR
+            <label for="zipCode">Zip Code : </label>
+            <input type="text" name="zipCode" id="zipCode">
+            <label for="countryName">Country Name : </label>
+            <input type="text" name="countryName" id="countryName">
+            <button class="btn btn-secondary">Send</button>
+        </form>
+        <div class="container"></div>
+        <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+            <div class="carousel-inner">
+                <div class="carousel-item active day1 mx-auto my-2">
+                    <div class="currentWeather">
+                        <div class="row">
+                            <div class="col">
+
+                                <p class="nowCity">Brussels</p>
+
+                            </div>
+                        </div>
+                        <div class="row text-center">
+                            <div class="col">
+                                <p class="nowDate">Thu Oct, 11</p>
+
+                            </div>
+                            <div class="col weatherMain">
+                                <p class="nowTemp">21.43 °C</p>
+                                <p class="nowDescription">light rain</p>
+
+                            </div>
+
+                        </div>
+                        <div class="row text-center">
+                            <div class="col humidity">
+                                Humidity
+                                <p class="nowHumidityValue weatherData">64%</p>
+                            </div>
+                            <div class="col visibility">
+                                Visibility
+                                <p class="nowVisibilityValue weatherData">10KM</p>
+
+                            </div>
+                            <div class="col air">
+                                Air
+                                <p class="nowAirValue weatherData">1014 hPa</p>
+
+                            </div>
+                            <div class="col wind">
+                                Wind
+                                <p class="nowWindValue weatherData">5.36 mph</p>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="carousel-item day2">
+                    <div class="currentWeather">
+                        <div class="row">
+                            <div class="col">
+
+                                <p class="nowCity">Brussels</p>
+
+                            </div>
+                        </div>
+                        <div class="row text-center">
+                            <div class="col">
+                                <p class="nowDate">Fri Oct, 12</p>
+
+                            </div>
+                            <div class="col weatherMain">
+                                <p class="nowTemp">16.69 °C</p>
+                                <p class="nowDescription">overcast clouds</p>
+
+                            </div>
+
+                        </div>
+                        <div class="row text-center">
+                            <div class="col humidity">
+                                Humidity
+                                <p class="nowHumidityValue weatherData">68%</p>
+                            </div>
+                            <div class="col visibility">
+                                Visibility
+                                <p class="nowVisibilityValue weatherData">10KM</p>
+
+                            </div>
+                            <div class="col air">
+                                Air
+                                <p class="nowAirValue weatherData">1014 hPa</p>
+
+                            </div>
+                            <div class="col wind">
+                                Wind
+                                <p class="nowWindValue weatherData">3.84 mph</p>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="carousel-item day3">
+                    <div class="currentWeather">
+                        <div class="row">
+                            <div class="col">
+
+                                <p class="nowCity">Brussels</p>
+
+                            </div>
+                        </div>
+                        <div class="row text-center">
+                            <div class="col">
+                                <p class="nowDate">Sat Oct, 13</p>
+
+                            </div>
+                            <div class="col weatherMain">
+                                <p class="nowTemp">16.85 °C</p>
+                                <p class="nowDescription">light rain</p>
+
+                            </div>
+
+                        </div>
+                        <div class="row text-center">
+                            <div class="col humidity">
+                                Humidity
+                                <p class="nowHumidityValue weatherData">92%</p>
+                            </div>
+                            <div class="col visibility">
+                                Visibility
+                                <p class="nowVisibilityValue weatherData">10KM</p>
+
+                            </div>
+                            <div class="col air">
+                                Air
+                                <p class="nowAirValue weatherData">1013 hPa</p>
+
+                            </div>
+                            <div class="col wind">
+                                Wind
+                                <p class="nowWindValue weatherData">4.24 mph</p>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="carousel-item day4">
+                    <div class="currentWeather">
+                        <div class="row">
+                            <div class="col">
+
+                                <p class="nowCity">Brussels</p>
+
+                            </div>
+                        </div>
+                        <div class="row text-center">
+                            <div class="col">
+                                <p class="nowDate">Sun Oct, 14</p>
+
+                            </div>
+                            <div class="col weatherMain">
+                                <p class="nowTemp">19.59 °C</p>
+                                <p class="nowDescription">overcast clouds</p>
+
+                            </div>
+
+                        </div>
+                        <div class="row text-center">
+                            <div class="col humidity">
+                                Humidity
+                                <p class="nowHumidityValue weatherData">61%</p>
+                            </div>
+                            <div class="col visibility">
+                                Visibility
+                                <p class="nowVisibilityValue weatherData">10KM</p>
+
+                            </div>
+                            <div class="col air">
+                                Air
+                                <p class="nowAirValue weatherData">1002 hPa</p>
+
+                            </div>
+                            <div class="col wind">
+                                Wind
+                                <p class="nowWindValue weatherData">9.16 mph</p>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="carousel-item day5">
+                    <div class="currentWeather">
+                        <div class="row">
+                            <div class="col">
+
+                                <p class="nowCity">Brussels</p>
+
+                            </div>
+                        </div>
+                        <div class="row text-center">
+                            <div class="col">
+                                <p class="nowDate">Mon Oct, 15</p>
+
+                            </div>
+                            <div class="col weatherMain">
+                                <p class="nowTemp">8.56 °C</p>
+                                <p class="nowDescription">light rain</p>
+
+                            </div>
+
+                        </div>
+                        <div class="row text-center">
+                            <div class="col humidity">
+                                Humidity
+                                <p class="nowHumidityValue weatherData">74%</p>
+                            </div>
+                            <div class="col visibility">
+                                Visibility
+                                <p class="nowVisibilityValue weatherData">10KM</p>
+
+                            </div>
+                            <div class="col air">
+                                Air
+                                <p class="nowAirValue weatherData">1018 hPa</p>
+
+                            </div>
+                            <div class="col wind">
+                                Wind
+                                <p class="nowWindValue weatherData">5.22 mph</p>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="sr-only">Previous</span>
+            </a>
+            <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
+            </a>
+        </div>
+
+
+        <div class="weatherAllDay d-flex flex-row m-1">
+
+        </div>
+
+
+    </main>
+    <footer></footer>
+</div>
+</body>
+</html>
