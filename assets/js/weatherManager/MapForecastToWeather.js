@@ -1,4 +1,4 @@
-﻿import{Weather} from "./weather.js";
+﻿import {Weather} from "./weather.js";
 
 //take a openWeather forecast and parse it to weathers object
 function ForecastToWeathers(forecast) {
@@ -24,12 +24,14 @@ function ForecastToWeather(forecast, i) {
         currentForecast.weather[0].description,
         currentForecast.main.temp,
         forecast.city.name,
+        currentForecast.weather[0].icon,
         currentForecast.main.humidity,
         currentForecast.visibility,
         currentForecast.main.pressure,
-        currentForecast.wind.speed,
+        currentForecast.wind.speed
     );
 
     return currentWeather;
 }
-export{ForecastToWeathers}
+
+export {ForecastToWeathers}

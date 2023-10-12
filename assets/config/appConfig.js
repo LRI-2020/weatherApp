@@ -5,4 +5,8 @@ let apiKey = await fetch("./assets/Secrets/secrets.json")
     .then((data) => data.weatherAppApiKey)
     .catch((e) => e);
 
-export{geoCodingHost,OpenWeatherHost,apiKey}
+function getIconUrl(iconCode,size){
+    return `https://openweathermap.org/img/wn/${iconCode}${size}.png`;
+}
+
+export{geoCodingHost,OpenWeatherHost,apiKey,getIconUrl}

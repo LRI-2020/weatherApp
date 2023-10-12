@@ -12,8 +12,8 @@
                 </div>
                 <div class="col weatherMain">
                     <p class="nowTemp"> </p>
+                    <img class="nowImg" src="" alt="weatherIcon">
                     <p class="nowDescription"> </p>
-
                 </div>
                
             </div>

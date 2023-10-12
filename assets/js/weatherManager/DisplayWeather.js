@@ -1,11 +1,11 @@
 ﻿import {mainWeatherTemp} from "../hmlTemplates.js";
 import {addOneDay, FormatDate} from "../helpers.js";
 import {FilterWeathersByDate} from "./weatherManager.js";
+import {getIconUrl} from "../../config/appConfig.js";
 
 function DisplayMainWeathers(MainWeathers) {
 
     // let carousel = document.querySelector(".carousel-inner");
-
     let container = document.querySelector(".allWeather");
 
 
@@ -24,6 +24,9 @@ function DisplayMainWeathers(MainWeathers) {
 
         let tempElement = weatherElement.querySelector(".nowTemp");
         tempElement.innerText = `${currentWeather.temp} °C`;
+
+        let imgEl = weatherElement.querySelector(".nowImg");
+        imgEl.setAttribute("src",getIconUrl(currentWeather.icon,"@4x"));
 
         let description = weatherElement.querySelector(".nowDescription");
         description.innerText = currentWeather.description;
@@ -96,6 +99,7 @@ function DisplayBy3Hours(weather) {
                          <p class="hour"> Hour </p>
                       </div>
                         <div class="card-body">
+                         <img class="weatherImg" src=""> 
                             <p class="description"> Description </p>
                         </div>
                         <div class="card-footer weatherMain">
@@ -104,6 +108,7 @@ function DisplayBy3Hours(weather) {
 
     card.querySelector(".hour").innerText = `${weather.date.getHours()}:${weather.date.getMinutes()}`;
     card.querySelector(".description").innerText = weather.description;
+    card.querySelector(".weatherImg").setAttribute("src",getIconUrl(weather.icon,""));
     card.querySelector(".temp").innerText = `${weather.temp}°`;
 
     return card;
