@@ -1,7 +1,8 @@
 ﻿import {mainWeatherTemp} from "../hmlTemplates.js";
-import {addOneDay, FormatDate} from "../helpers.js";
+import {addOneDay, FormatDate, DisplayActiveOnly} from "../helpers.js";
 import {FilterWeathersByDate} from "./weatherManager.js";
 import {getIconUrl} from "../../config/appConfig.js";
+import{DisplayChart} from "./chartsGenerator.js";
 
 function DisplayMainWeathers(MainWeathers) {
 
@@ -75,20 +76,16 @@ function DisplayDetailedWeathers(weathers) {
     }
 
 
-    let container = document.querySelector(".detailedWeather");
-
+    let detailedWrapper = document.querySelector(".detailedWeather");
+    let chartsContainer = document.querySelector(".chartsWeather");
 
     for (let weathers of WeathersByDates) {
 
-        DisplayWeatherAllDay(weathers);
-
+        DisplayWeatherAllDay(weathers, WeathersByDates.indexOf(weathers));
     }
-
-    let firstItem = container.children.item(0);
-    firstItem.classList.remove("d-none");
-    firstItem.classList.add("active");
-
-
+    
+    DisplayActiveOnly(detailedWrapper);
+    DisplayActiveOnly(chartsContainer);
 }
 
 function DisplayBy3Hours(weather) {
@@ -114,7 +111,7 @@ function DisplayBy3Hours(weather) {
     return card;
 }
 
-function DisplayWeatherAllDay(weathers) {
+function DisplayWeatherAllDay(weathers,index) {
 
     let wrapper = document.querySelector(".detailedWeather");
     let row = document.createElement('div');
@@ -126,6 +123,10 @@ function DisplayWeatherAllDay(weathers) {
     }
 
     wrapper.appendChild(row);
+    
+    let startDate = weathers[0].date;
+    let temp = weathers.map(i => i.temp);
+    DisplayChart(index,startDate.getTime(),temp);
 }
 
 export {DisplayMainWeathers, DisplayWeatherAllDay, DisplayDetailedWeathers}

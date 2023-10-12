@@ -5,3 +5,4 @@ InitializeCountries();
 await GenerateBruxellesWeather();
 SetFormListener();
 SetButtonsListeners();
+

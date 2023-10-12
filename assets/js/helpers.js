@@ -29,6 +29,12 @@ async function InitializeCountries(){
 
     // countries.forEach(i => countriesNames.push(i.name));
 }
+function DisplayActiveOnly(container){
+    let firstItem = container.children.item(0);
+    firstItem.classList.remove("d-none");
+    firstItem.classList.add("active");
+}
+
 
 function addOneDay(date = new Date()) {
     date.setDate(date.getDate() + 1);
@@ -36,4 +42,4 @@ function addOneDay(date = new Date()) {
     return date;
 }
 
-export{FormatDate, GetCountryCode, addOneDay, InitializeCountries}
+export{FormatDate, GetCountryCode, addOneDay, InitializeCountries, DisplayActiveOnly}

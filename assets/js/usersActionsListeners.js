@@ -33,9 +33,12 @@ function SetButtonsListeners() {
         let previousElMain = activeMain.previousSibling;
         let activeDetails = document.querySelector(".details.active");
         let previousElDetails = activeDetails.previousSibling;
+        let activeChart = document.querySelector(".tempChart.active");
+        let previousChart = activeChart.previousSibling;
 
         ChangeActive(activeMain, previousElMain,"currentWeather");
         ChangeActive(activeDetails, previousElDetails,"details");
+        ChangeActive(activeChart, previousChart,"tempChart");
         
     });
 
@@ -46,9 +49,12 @@ function SetButtonsListeners() {
         let nextElMain = activeMain.nextSibling;
         let activeDetails = document.querySelector(".details.active");
         let nextElDetails = activeDetails.nextSibling;
+        let activeChart = document.querySelector(".tempChart.active");
+        let nextChart = activeChart.nextSibling;
 
         ChangeActive(activeMain, nextElMain, "currentWeather");
         ChangeActive(activeDetails, nextElDetails,"details");
+        ChangeActive(activeChart, nextChart,"tempChart");
 
     });
 
