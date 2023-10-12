@@ -8,7 +8,7 @@ async function GenerateBruxellesWeather() {
         
         let mainWeathers = GetMainWeathers(r);
         DisplayMainWeathers(mainWeathers);
-        DisplayWeatherAllDay(FilterWeathersByDate(r, GetWeathersMinDate(mainWeathers)))
+        DisplayDetailedWeathers(r);
         return r;
     });
 }
@@ -69,13 +69,14 @@ async function GetWeather(cityForm) {
 
     let cityName = cityForm.querySelector("input#cityName").value;
     let zipCode = cityForm.querySelector("input#zipCode").value;
-    let country = cityForm.querySelector("input#countryName").value;
+    let select = cityForm.querySelector("select#countries");
+    let country = select.value;
 
     if (cityName !== null && cityName.trim() !== "") {
         return await GetWeatherByCity(cityName).then((r) => {
 
             let mainWeathers = GetMainWeathers(r);
-            DisplayMainWeathers(mainWeathers);
+            DisplayMainWeathers(mainWeathers);  
             DisplayDetailedWeathers(r);
             // DisplayWeatherAllDay(FilterWeathersByDate(r, GetWeathersMinDate(mainWeathers)))
             return r;
@@ -85,7 +86,7 @@ async function GetWeather(cityForm) {
         return await GetWeatherByZipCode(zipCode, country).then((r) => {
             let mainWeathers = GetMainWeathers(r);
             DisplayMainWeathers(mainWeathers);
-            // DisplayWeatherAllDay(FilterWeathersByDate(r, GetWeathersMinDate(mainWeathers)))
+            DisplayDetailedWeathers(r);
             return r;
         });
 

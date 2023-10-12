@@ -15,6 +15,20 @@ async function GetCountryCode(country) {
     return countries.find(i => i.name.split(" ")[0].toLowerCase() === country.toLowerCase()).code;
 
 }
+async function InitializeCountries(){
+    let select = document.querySelector("select#countries");
+    let countries = await fetch("./assets/data/countryCodes.json").then((res) => res.json());
+    let countriesNames = countries.map(i => i.name);
+    
+    countriesNames.forEach((i) => {
+        let option = document.createElement("option");
+        option.setAttribute("value",i);
+        option.innerText=i;
+        select.appendChild(option);
+    })
+
+    // countries.forEach(i => countriesNames.push(i.name));
+}
 
 function addOneDay(date = new Date()) {
     date.setDate(date.getDate() + 1);
@@ -22,4 +36,4 @@ function addOneDay(date = new Date()) {
     return date;
 }
 
-export{FormatDate, GetCountryCode, addOneDay}
+export{FormatDate, GetCountryCode, addOneDay, InitializeCountries}
