@@ -36,3 +36,13 @@ Enough is enough, you decide to build a small web application for them so that y
 -   Allow the user to compare the weather in multiple cities simultaneously
 -   Use the API of https://unsplash.com/ to show a photo of the city they entered in the form.
 -   Display a line graph of temperature over time using a library such as [Chart.js](https://www.chartjs.org)
+
+## Instructions to use the project
+
+API key of OpenWeather api is needed.
+Steps : 
+1. Download the project
+2. Create a directory named "Secrets" in the assets directory
+3. add a json file named "secrets.json"
+4. in the file, put your api key with the following syntax:
+   {"weatherAppApiKey":"<The Key Here>"}
