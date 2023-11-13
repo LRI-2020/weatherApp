@@ -16,7 +16,6 @@ function DisplayMainWeathers(MainWeathers) {
         weatherElement.classList.add("currentWeather", "d-none", "col", "mx-auto");
         weatherElement.innerHTML = mainWeatherTemp;
 
-
         let city = weatherElement.querySelector(".nowCity");
         city.innerText = currentWeather.city;
 
@@ -77,7 +76,9 @@ function DisplayDetailedWeathers(weathers) {
 
 
     let detailedWrapper = document.querySelector(".detailedWeather");
+    detailedWrapper.innerHTML='';
     let chartsContainer = document.querySelector(".chartsWeather");
+    chartsContainer.innerHTML='';
 
     for (let weathers of WeathersByDates) {
 

@@ -1,4 +1,5 @@
-﻿
+﻿import {countryCodes} from "../data/countryCodes.js";
+
 function FormatDate(date) {
 
     let months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
@@ -10,15 +11,13 @@ function FormatDate(date) {
 }
 
 async function GetCountryCode(country) {
-    let countries = await fetch("./assets/data/countryCodes.json").then((res) => res.json());
 
-    return countries.find(i => i.name.split(" ")[0].toLowerCase() === country.toLowerCase()).code;
+    return countryCodes.find(i => i.name.split(" ")[0].toLowerCase() === country.toLowerCase()).code;
 
 }
 async function InitializeCountries(){
     let select = document.querySelector("select#countries");
-    let countries = await fetch("./assets/data/countryCodes.json").then((res) => res.json());
-    let countriesNames = countries.map(i => i.name);
+    let countriesNames = countryCodes.map(i => i.name);
     
     countriesNames.forEach((i) => {
         let option = document.createElement("option");
