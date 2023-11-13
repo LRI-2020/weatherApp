@@ -1,1 +1,7 @@
 ﻿/assets/Secrets/secrets.json
+/node_modules/
+/dist/
+/.idea/
+/.scannerwork/.sonar_lock
+/.scannerwork/report-task.txt
+/assets/Secrets/
