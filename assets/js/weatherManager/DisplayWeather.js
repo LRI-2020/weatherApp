@@ -6,7 +6,6 @@ import{DisplayChart} from "./chartsGenerator.js";
 
 function DisplayMainWeathers(MainWeathers) {
 
-    // let carousel = document.querySelector(".carousel-inner");
     let container = document.querySelector(".allWeather");
 
 
