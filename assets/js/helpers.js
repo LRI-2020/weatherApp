@@ -26,7 +26,6 @@ async function InitializeCountries(){
         select.appendChild(option);
     })
 
-    // countries.forEach(i => countriesNames.push(i.name));
 }
 function DisplayActiveOnly(container){
     let firstItem = container.children.item(0);

@@ -1,5 +1,5 @@
-﻿import {GetWeatherByCity, GetWeatherByZipCode, FilterWeathersByDate, GetWeathersMinDate} from "./weatherManager/weatherManager.js";
-import {DisplayMainWeathers, DisplayWeatherAllDay,DisplayDetailedWeathers} from "./weatherManager/DisplayWeather.js";
+﻿import {GetWeatherByCity, GetWeatherByZipCode, FilterWeathersByDate} from "./weatherManager/weatherManager.js";
+import {DisplayMainWeathers, DisplayDetailedWeathers} from "./weatherManager/DisplayWeather.js";
 import {addOneDay} from "./helpers.js";
 
 async function GenerateBruxellesWeather() {
@@ -16,11 +16,15 @@ async function GenerateBruxellesWeather() {
 function SetFormListener() {
     let cityForm = document.querySelector(".cityForm");
 
-    cityForm.addEventListener('submit', async function (e) {
-        e.preventDefault();
-        document.querySelector(".allWeather").innerHTML = "";
-        document.querySelector(".detailedWeather").innerHTML = "";
-        await GetWeather(cityForm);
+    cityForm.addEventListener('submit', (e) => {
+
+        (async () => {
+            e.preventDefault();
+            document.querySelector(".allWeather").innerHTML = "";
+            document.querySelector(".detailedWeather").innerHTML = "";
+            await GetWeather(cityForm);
+            // ...
+        })();       
 
     })
 }
@@ -63,7 +67,7 @@ function SetButtonsListeners() {
 
 function ChangeActive(current, sibling, className) {
 
-    if (sibling !== null && sibling.classList !== undefined && sibling.classList.contains(className)) {
+    if (sibling?.classList?.contains(className)) {
         current.classList.toggle("d-none");
         current.classList.toggle("active");
         sibling.classList.toggle("d-none");
@@ -111,7 +115,6 @@ function GetMainWeathers(weathers) {
             mainWeathers.push(weatherOfTheDate[0])
         }
         else{
-            // mainWeathers.push(GetWeatherAverageHour(weatherOfTheDate));
             mainWeathers.push(weatherOfTheDate[3])
         }
         date = addOneDay(date);
@@ -121,10 +124,3 @@ function GetMainWeathers(weathers) {
 }
 
 export {GenerateBruxellesWeather, SetFormListener, SetButtonsListeners}
-
-// let carousel = document.querySelector(".carousel");
-// let ctrNext = document.querySelector(".carousel-control-next");
-// new bootstrap.Carousel(myCarousel)
-//
-// ctrNext.addEventListener("click",()=>{
-// })
