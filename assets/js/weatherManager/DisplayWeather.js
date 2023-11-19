@@ -4,16 +4,19 @@ import {FilterWeathersByDate} from "./weatherManager.js";
 import {getIconUrl} from "../../config/appConfig.js";
 import{DisplayChart} from "./chartsGenerator.js";
 
+
 function DisplayMainWeathers(MainWeathers) {
 
     let container = document.querySelector(".allWeather");
-
 
     for (let currentWeather of MainWeathers) {
 
         let weatherElement = document.createElement('div');
         weatherElement.classList.add("currentWeather", "d-none", "col", "mx-auto");
         weatherElement.innerHTML = mainWeatherTemp;
+        weatherElement.innerHTML = currentWeather;
+        weatherElement.innerHTML = currentWeather;
+        weatherElement.innerHTML = currentWeather;
 
         let city = weatherElement.querySelector(".nowCity");
         city.innerText = currentWeather.city;
